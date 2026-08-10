@@ -1,0 +1,712 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: grid;
+
+
+
+}
+
+body a {
+    text-decoration: none;
+    color: white;
+}
+
+header {
+    background-color: #DBEAFE;
+    height: 130px;
+    display: grid;
+    grid-template-columns: 327px 1fr;
+
+
+}
+
+header ul {
+
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    text-align: center;
+    align-items: center;
+    gap: 2px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.inc {
+    background-color: #7C3AED;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    display: grid;
+    align-items: center;
+}
+
+
+.login {
+    background-color: #2563EB;
+    border-radius: 20px;
+    width: 90px;
+    height: 40px;
+    align-items: center;
+    display: grid;
+}
+
+.logo img {
+    width: 327px;
+    height: 130px;
+}
+
+.busca {
+
+    width: 180px;
+    position: relative;
+
+
+}
+
+.lupa {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.busca input {
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 20px;
+    height: 40px;
+
+}
+
+
+
+.banner img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.banner {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    padding-top: 90px;
+    padding-bottom: 100px;
+    width: 70%;
+    margin: auto;
+}
+
+
+
+.banner_texto {
+    display: grid;
+    grid-template-rows: 80px 80px 80px 50px;
+    text-align: left;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+h2 {
+    color: #1E40AF;
+}
+
+.banner button {
+    border-radius: 20px;
+    border: none;
+    background-color: #7C3AED;
+    width: 200px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+}
+
+.destaque h2 {
+    text-align: center;
+    color: #1E40AF;
+}
+
+.destaque {
+    padding-top: 100px;
+    border: solid;
+    border-color: #2563EB;
+    padding-bottom: 100px;
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.destaque_produtos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-top: 50px;
+    place-items: center;
+    text-align: center;
+    font-weight: bolder;
+
+}
+
+.destaque img {
+    width: 270px;
+    height: 200px;
+    border-radius: 20px;
+
+}
+
+footer {
+    background-color: #DBEAFE;
+    margin-top: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.logor img {
+    width: 400px;
+    height: 200px;
+    padding-top: 50px;
+}
+
+footer ul {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    padding: 40px;
+    font-size: 18px;
+}
+
+.direito {
+    background-color: #3671f0a8;
+    padding: 12px;
+    grid-column: 1/3;
+    margin-top: 15px;
+    font-size: 8px;
+    color: rgb(0, 0, 0);
+
+
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-top: 100px;
+    place-items: center;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.produtos img {
+    width: 320px;
+    height: 240px;
+    border-radius: 20px;
+}
+
+button {
+    border-radius: 20px;
+    border: none;
+    background-color: #7C3AED;
+    width: 150px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    height: 40px;
+}
+
+footer li {
+    color: black;
+}
+
+.quem_somos {
+    padding-top: 70px;
+    display: grid;
+}
+
+.cima_quem {
+    text-align: center;
+    font-size: 19px;
+    display: grid;
+    gap: 18px;
+    padding-bottom: 100px;
+}
+
+.missao {
+    display: grid;
+    border: solid;
+    border-color: #2564eb5e;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    padding-left: 90px;
+    padding-right: 70px;
+    gap: 20px;
+    font-size: 18px;
+
+}
+
+.fonep img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.fonep {
+    padding-left: 80px;
+}
+
+.produto {
+    display: grid;
+    grid-template-columns: 500px 300px 1fr;
+    padding-top: 70px;
+    height: auto;
+
+}
+
+.star img {
+    width: 130px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.star {
+    width: 500px;
+    padding-top: 20px;
+    display: grid;
+    gap: 15px;
+    font-size: 20px;
+}
+
+.txtproduto {
+    display: grid;
+    gap: 8px;
+}
+
+
+.especifica {
+    padding-top: 40px;
+    padding-left: 70px;
+    width: 400px;
+    text-align: right;
+
+}
+
+.txtespecifica {
+    display: grid;
+    gap: 40px;
+    font-size: 19px;
+
+}
+
+.especifica ul {
+    list-style: none;
+}
+
+.resultado {
+    text-align: center;
+    padding-top: 50px;
+    padding-left: 50px;
+    font-size: 40px;
+}
+
+.contato {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+
+
+.contato form {
+
+    display: grid;
+    gap: 20px;
+    width: 450px;
+}
+
+.contato input {
+
+    height: 40px;
+    border: 2px solid #DBEAFE;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+.contato textarea {
+
+    height: 150px;
+    border: 2px solid #DBEAFE;
+    border-radius: 10px;
+    resize: none;
+    padding: 15px;
+}
+
+.loginp{
+
+    display: grid;
+    justify-items: center;
+    margin-top: 60px;
+}
+
+
+
+.loginp form{
+
+    display: grid;
+    gap: 20px;
+    width: 350px;
+}
+
+.loginp input{
+
+    height: 40px;
+    border: 2px solid #DBEAFE;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+.lembrar{
+
+    display: grid;
+    grid-template-columns: 20px auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.loginp button{
+
+    width: 180px;
+    height: 45px;
+    justify-self: center;
+    border: none;
+    border-radius: 25px;
+    background: #7C3AED;
+    color: white;
+    cursor: pointer;
+}
+
+.loginp a{
+
+    color: #2563EB;
+    text-decoration: none;
+    justify-self: center;
+}
+
+.loginp a:hover{
+
+    color: #7C3AED;
+}
+
+.button:hover{
+    color: #1E40AF;
+}
+
+.pedidos{
+
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    gap: 30px;
+}
+
+
+
+.pedido{
+
+    display: grid;
+    gap: 15px;
+}
+
+.titulo,
+.item{
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+   
+}
+
+.titulo{
+
+    background: #DBEAFE;
+    font-weight: bold;
+}
+
+
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    min-height: 650px;
+    background-image: url("hero.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-text {
+    position: absolute;
+    top: 45px;
+    left: 55px;
+    width: 390px;
+}
+
+.hero-text > span {
+    font-size: 10px;
+    font-weight: bold;
+    color: #7438ff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    line-height: 1;
+    margin-top: 14px;
+    letter-spacing: -2px;
+}
+
+.hero h1 b {
+    color: #2563eb;
+}
+
+.hero-text > p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+    margin-top: 18px;
+    width: 340px;
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.buttons a {
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.buttons a:first-child {
+    background: #7438ff;
+    color: white;
+}
+
+.buttons a:last-child {
+    background: white;
+    border: 1px solid #aaa;
+    color: #222;
+}
+
+.features {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.features div {
+    color: #2563eb;
+    font-size: 15px;
+}
+
+.features strong,
+.features small {
+    display: block;
+    margin-left: 20px;
+}
+
+.features strong {
+    font-size: 8px;
+    color: #111;
+}
+
+.features small {
+    font-size: 7px;
+    color: #777;
+}
+
+
+.promo {
+    width: calc(100% - 100px);
+    height: 360px;
+    margin: 45px 50px 0;
+    border-radius: 35px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background-image: url("promo.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.promo-text {
+    position: absolute;
+    left: 35px;
+    top: 40px;
+}
+
+.promo-title {
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.promo h2 {
+    font-size: 33px;
+    line-height: 1;
+}
+
+.promo h2 b {
+    color: #783cff;
+}
+
+.discount {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.discount strong {
+    color: #783cff;
+}
+
+.promo-text a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 11px 17px;
+    background: linear-gradient(90deg, #7730ef, #2864ed);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.promo-info {
+    position: absolute;
+    bottom: 17px;
+    left: 35px;
+    display: flex;
+    gap: 25px;
+    font-size: 7px;
+    font-weight: bold;
+}
+
+.promo-info small {
+    color: #bbb;
+    font-weight: normal;
+}
+
+
+.benefits {
+    padding: 50px 80px 65px;
+    margin-top: 45px;
+    border-top: 1px solid #c8d8ff;
+    border-bottom: 1px solid #c8d8ff;
+}
+
+.benefits h2,
+.newsletter h2 {
+    text-align: center;
+    color: #6938ef;
+    font-size: 20px;
+}
+
+.benefit-list {
+    display: grid;
+    gap: 38px;
+    margin-top: 55px;
+}
+
+.benefit-list h3 {
+    font-size: 16px;
+    color: #2866ee;
+    margin-bottom: 4px;
+}
+
+.benefit-list p {
+    font-size: 12px;
+}
+
+
+.reviews {
+    padding: 48px 45px 55px;
+    border-bottom: 1px solid #b9ceff;
+}
+
+.reviews h2 {
+    font-size: 20px;
+    color: #6938ef;
+    margin-bottom: 48px;
+}
+
+.review {
+    margin-bottom: 43px;
+    font-size: 12px;
+}
+
+.review p {
+    margin-top: 13px;
+    line-height: 1.5;
+    max-width: 500px;
+}
+
+.review b {
+    display: block;
+    color: #2866ee;
+    font-size: 21px;
+    margin-top: 8px;
+    letter-spacing: -3px;
+}
+
+
+.newsletter {
+    height: 270px;
+    text-align: center;
+    padding-top: 28px;
+}
+
+.newsletter p {
+    margin-top: 75px;
+    color: #2866ee;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.newsletter input {
+    display: block;
+    width: 295px;
+    height: 31px;
+    margin: 30px auto 25px;
+    padding: 8px;
+    border: 1px solid #aaa;
+}
+
+.newsletter button {
+    width: 95px;
+    height: 30px;
+    border: 0;
+    border-radius: 20px;
+    background: #7835ed;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
