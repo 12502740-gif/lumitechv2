@@ -1,157 +1,462 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LumiTech</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LumiTech — Tecnologia que transforma o seu dia</title>
+<meta name="description" content="LumiTech: headsets, teclados, mouses, notebooks e acessórios de tecnologia com curadoria, garantia e suporte especializado.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  // Aplica o tema salvo antes da pintura para evitar flash de cor errada.
+  (function () {
+    try {
+      var t = localStorage.getItem('lumitech-theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
 
-<div class="page">
+<a class="skip-link" href="#hero">Ir para o conteúdo</a>
 
-    <section class="hero">
-        <div class="hero-text">
-            <span>SEU SETUP, SUA MELHOR VERSÃO</span>
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="brand" href="#hero" aria-label="LumiTech, página inicial">
+      <span class="brand__mark">LT</span>
+      <span class="brand__name">LumiTech</span>
+    </a>
 
-            <h1>
-                Tecnologia que<br>
-                eleva sua<br>
-                <b>experiência.</b>
-            </h1>
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <a href="#hero" class="nav__link is-active">Início</a>
+      <a href="#produtos" class="nav__link">Produtos</a>
+      <a href="#quem-somos" class="nav__link">Quem somos</a>
+      <a href="#contato" class="nav__link">Contato</a>
+    </nav>
 
-            <p>
-                Encontre os melhores mouses, teclados, headsets e
-                periféricos com qualidade, desempenho e preços que
-                cabem no seu bolso.
-            </p>
+    <div class="header__actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Buscar produtos" aria-expanded="false" aria-controls="searchBar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
 
-            <div class = "buttons">
-                <a href="produtos.html">Ver produtos</a>
-            </div>
+      <button class="icon-btn" id="cartBtn" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h2l2.2 10.2a2 2 0 0 0 2 1.6h6.9a2 2 0 0 0 2-1.5L21 8H7"/><circle cx="10.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
 
-            <div class="features">
-                <div>
-                    🛡️
-                    <strong>Compra segura</strong>
-                    <small>Seus dados protegidos</small>
-                </div>
+      <button class="icon-btn theme-btn" id="themeBtn" aria-label="Alternar tema" title="Alternar modo claro e escuro">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13.5A8 8 0 0 1 10.5 4a8 8 0 1 0 9.5 9.5Z"/></svg>
+      </button>
 
-                <div>
-                    🚚
-                    <strong>Entrega rápida</strong>
-                    <small>Para todo o Brasil</small>
-                </div>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <span class="menu-btn__bars"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
 
-                <div>
-                    ◉
-                    <strong>Garantia</strong>
-                    <small>Produtos com garantia</small>
-                </div>
-            </div>
+  <!-- Busca -->
+  <div class="searchbar" id="searchBar" hidden>
+    <div class="container searchbar__inner">
+      <svg class="searchbar__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="searchInput" placeholder="Busque por headset, teclado, notebook…" aria-label="Buscar produtos">
+      <button class="icon-btn" id="searchClose" aria-label="Fechar busca">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="overlay" id="overlay" hidden></div>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">Loja de tecnologia</p>
+      <h1 class="hero__title">Tecnologia que transforma o seu dia.</h1>
+      <p class="hero__text">
+        Headsets, periféricos e eletrônicos escolhidos um a um, testados antes de entrar
+        na loja. Você compra sabendo o que vai receber — e com quem falar se precisar.
+      </p>
+      <div class="hero__actions">
+        <a href="#produtos" class="btn btn--primary">Comprar agora</a>
+        <a href="#quem-somos" class="btn btn--ghost">Conheça a LumiTech</a>
+      </div>
+      <dl class="hero__facts">
+        <div><dt>Frete</dt><dd>Enviamos para todo o Brasil</dd></div>
+        <div><dt>Garantia</dt><dd>Troca em até 30 dias</dd></div>
+        <div><dt>Suporte</dt><dd>Atendimento por gente de verdade</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <div class="hero__glow"></div>
+      <svg class="hero__scene" viewBox="0 0 520 440" role="presentation">
+        <!-- notebook -->
+        <g class="il">
+          <rect class="il-fill" x="110" y="120" width="300" height="190" rx="14"/>
+          <rect class="il-screen" x="126" y="136" width="268" height="158" rx="8"/>
+          <path class="il-acc-s" d="M156 258h60M156 236h130M156 214h100"/>
+          <circle class="il-acc-f" cx="168" cy="176" r="14"/>
+          <path class="il-bd" d="M78 310h364l16 30a10 10 0 0 1-9 15H71a10 10 0 0 1-9-15Z"/>
+          <path class="il-bd" d="M226 336h68"/>
+        </g>
+        <!-- headset flutuante -->
+        <g transform="translate(352 40)"><g class="il float-a">
+          <rect class="il-card" x="0" y="0" width="140" height="120" rx="20"/>
+          <path class="il-bd" d="M38 78V60a32 32 0 0 1 64 0v18"/>
+          <rect class="il-acc-f" x="28" y="72" width="18" height="30" rx="8"/>
+          <rect class="il-acc-f" x="94" y="72" width="18" height="30" rx="8"/>
+        </g></g>
+        <!-- mouse flutuante -->
+        <g transform="translate(28 66)"><g class="il float-b">
+          <rect class="il-card" x="0" y="0" width="112" height="112" rx="20"/>
+          <rect class="il-bd" x="40" y="26" width="32" height="60" rx="16"/>
+          <path class="il-bd" d="M56 26v18"/>
+        </g></g>
+        <!-- teclado flutuante -->
+        <g transform="translate(370 300)"><g class="il float-a">
+          <rect class="il-card" x="0" y="0" width="128" height="86" rx="18"/>
+          <path class="il-acc-s" d="M22 32h84M22 50h84M22 66h44"/>
+        </g></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORIAS ============ -->
+<section class="section categories" id="categorias">
+  <div class="container">
+    <header class="section__head">
+      <h2 class="section__title">Escolha por categoria</h2>
+      <p class="section__sub">Cinco linhas, uma curadoria. Tudo com garantia e nota fiscal.</p>
+    </header>
+
+    <div class="cat-grid">
+      <a class="cat" href="#produtos" data-cat="headsets">
+        <svg class="cat__ico" viewBox="0 0 200 150" aria-hidden="true"><use href="#ic-headset"></use></svg>
+        <h3>Headsets</h3>
+        <p>Áudio e comunicação</p>
+      </a>
+      <a class="cat" href="#produtos" data-cat="teclados">
+        <svg class="cat__ico" viewBox="0 0 200 150" aria-hidden="true"><use href="#ic-keyboard"></use></svg>
+        <h3>Teclados</h3>
+        <p>Mecânicos e compactos</p>
+      </a>
+      <a class="cat" href="#produtos" data-cat="mouses">
+        <svg class="cat__ico" viewBox="0 0 200 150" aria-hidden="true"><use href="#ic-mouse"></use></svg>
+        <h3>Mouses</h3>
+        <p>Precisão e ergonomia</p>
+      </a>
+      <a class="cat" href="#produtos" data-cat="acessorios">
+        <svg class="cat__ico" viewBox="0 0 200 150" aria-hidden="true"><use href="#ic-hub"></use></svg>
+        <h3>Acessórios</h3>
+        <p>Hubs, cabos e suportes</p>
+      </a>
+      <a class="cat" href="#produtos" data-cat="eletronicos">
+        <svg class="cat__ico" viewBox="0 0 200 150" aria-hidden="true"><use href="#ic-laptop"></use></svg>
+        <h3>Eletrônicos</h3>
+        <p>Notebooks e vestíveis</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUTOS ============ -->
+<section class="section products" id="produtos">
+  <div class="container">
+    <header class="section__head section__head--row">
+      <div>
+        <h2 class="section__title">Produtos em destaque</h2>
+        <p class="section__sub">Os mais procurados da semana.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar por categoria">
+        <button class="chip is-active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="headsets">Headsets</button>
+        <button class="chip" data-filter="teclados">Teclados</button>
+        <button class="chip" data-filter="mouses">Mouses</button>
+        <button class="chip" data-filter="acessorios">Acessórios</button>
+        <button class="chip" data-filter="eletronicos">Eletrônicos</button>
+      </div>
+    </header>
+
+    <div class="prod-grid" id="prodGrid">
+
+      <article class="card" data-cat="headsets" data-name="Headset Aura H7">
+        <div class="card__media">
+          <span class="tag">Mais vendido</span>
+          <button class="fav" aria-label="Adicionar Headset Aura H7 aos favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.2-4.5-7.2-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7.2 3C19.2 15.5 12 20 12 20Z"/></svg>
+          </button>
+          <svg class="card__art" viewBox="0 0 200 150" aria-label="Headset Aura H7"><use href="#ic-headset"></use></svg>
         </div>
-    </section>
-
-    <section class="promo" id="promocoes">
-        <div class="promo-text">
-            <p class="promo-title">MONTE SEU</p>
-
-            <h2>
-                SETUP <b>GAMER</b>
-            </h2>
-
-            <p class="discount">
-                Até <strong>30% OFF</strong> em<br>
-                periféricos selecionados.
-            </p>
-
-            <a href="index.html">Ver promoções →</a>
+        <div class="card__body">
+          <h3 class="card__name">Headset Aura H7</h3>
+          <p class="card__desc">Cancelamento ativo de ruído e 40 h de bateria.</p>
+          <div class="card__foot">
+            <span class="price" data-price="749">R$ 749,00</span>
+            <button class="btn btn--buy">Comprar</button>
+          </div>
         </div>
+      </article>
 
-        <div class="promo-info">
-            <span>🚚 ENTREGA RÁPIDA<br><small>Para todo o Brasil</small></span>
-            <span>🛡️ COMPRA SEGURA<br><small>Seus dados protegidos</small></span>
-            <span>▣ PARCELE EM ATÉ 12X<br><small>No cartão de crédito</small></span>
+      <article class="card" data-cat="teclados" data-name="Teclado Pulse K2">
+        <div class="card__media">
+          <button class="fav" aria-label="Adicionar Teclado Pulse K2 aos favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.2-4.5-7.2-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7.2 3C19.2 15.5 12 20 12 20Z"/></svg>
+          </button>
+          <svg class="card__art" viewBox="0 0 200 150" aria-label="Teclado Pulse K2"><use href="#ic-keyboard"></use></svg>
         </div>
-    </section>
-
-    <section class="benefits" id="beneficios">
-        <h2>BENEFÍCIOS</h2>
-
-        <div class="benefit-list">
-            <div>
-                <h3>Entrega rápida</h3>
-                <p>Receba seus produtos com agilidade em todo o Brasil.</p>
-            </div>
-
-            <div>
-                <h3>Compra segura</h3>
-                <p>Seus dados protegidos com criptografia e pagamento 100% seguro.</p>
-            </div>
-
-            <div>
-                <h3>Parcelamento facilitado</h3>
-                <p>Parcele suas compras em até 12x nos principais cartões.</p>
-            </div>
-
-            <div>
-                <h3>Garantia de qualidade</h3>
-                <p>Produtos originais com garantia e suporte especializado.</p>
-            </div>
+        <div class="card__body">
+          <h3 class="card__name">Teclado Pulse K2</h3>
+          <p class="card__desc">Mecânico 75%, switches trocáveis a quente.</p>
+          <div class="card__foot">
+            <span class="price" data-price="529">R$ 529,00</span>
+            <button class="btn btn--buy">Comprar</button>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <section class="reviews">
-        <h2>AVALIAÇÕES</h2>
-
-        <div class="review">
-            <span>— Lucas Ferreira</span>
-            <p>
-                "Comprei um mouse e um headset. A entrega foi muito rápida
-                e a qualidade dos produtos superou minhas expectativas!"
-            </p>
-            <b>★★★★★</b>
+      <article class="card" data-cat="mouses" data-name="Mouse Vector M3">
+        <div class="card__media">
+          <button class="fav" aria-label="Adicionar Mouse Vector M3 aos favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.2-4.5-7.2-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7.2 3C19.2 15.5 12 20 12 20Z"/></svg>
+          </button>
+          <svg class="card__art" viewBox="0 0 200 150" aria-label="Mouse Vector M3"><use href="#ic-mouse"></use></svg>
         </div>
-
-        <div class="review">
-            <span>— Mariana Oliveira</span>
-            <p>
-                "Excelente atendimento e produtos de ótima qualidade.
-                Recomendo a LumiTech para quem procura periféricos confiáveis."
-            </p>
-            <b>★★★★★</b>
+        <div class="card__body">
+          <h3 class="card__name">Mouse Vector M3</h3>
+          <p class="card__desc">Sem fio, 58 g, sensor óptico de 26.000 DPI.</p>
+          <div class="card__foot">
+            <span class="price" data-price="319">R$ 319,00</span>
+            <button class="btn btn--buy">Comprar</button>
+          </div>
         </div>
+      </article>
 
-        <div class="review">
-            <span>— Gabriel Santos</span>
-            <p>
-                "Site muito organizado, fácil de navegar e com ótimos preços.
-                Com certeza voltarei a comprar."
-            </p>
-            <b>★★★★★</b>
+      <article class="card" data-cat="eletronicos" data-name="Lumi Book 14">
+        <div class="card__media">
+          <span class="tag tag--alt">Lançamento</span>
+          <button class="fav" aria-label="Adicionar Lumi Book 14 aos favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.2-4.5-7.2-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7.2 3C19.2 15.5 12 20 12 20Z"/></svg>
+          </button>
+          <svg class="card__art" viewBox="0 0 200 150" aria-label="Notebook Lumi Book 14"><use href="#ic-laptop"></use></svg>
         </div>
-    </section>
-
-    <section class="newsletter" id="newsletter">
-        <h2>NEWSLETTER</h2>
-
-        <p>Receba ofertas exclusivas da LumiTech</p>
-
-        <input type="email" placeholder="Digite seu email">
-
-        <button>Cadastrar</button>
-    </section>
-
-</div>
-<footer>
-        <div class="logor"><img src="logo.png" alt=""></div>
-        <div>
-            
+        <div class="card__body">
+          <h3 class="card__name">Lumi Book 14</h3>
+          <p class="card__desc">Tela 14" 2.8K, 16 GB de RAM e SSD de 512 GB.</p>
+          <div class="card__foot">
+            <span class="price" data-price="5299">R$ 5.299,00</span>
+            <button class="btn btn--buy">Comprar</button>
+          </div>
         </div>
-        <div class="direito">
-            <h1>LumiTech © 2026 Todos os direitos reservados</h1>
-        </div>
-    </footer>
+      </article>
 
+      <article class="card" data-cat="eletronicos" data-name="Smartwatch Orbit S1">
+        <div class="card__media">
+          <button class="fav" aria-label="Adicionar Smartwatch Orbit S1 aos favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.2-4.5-7.2-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7.2 3C19.2 15.5 12 20 12 20Z"/></svg>
+          </button>
+          <svg class="card__art" viewBox="0 0 200 150" aria-label="Smartwatch Orbit S1"><use href="#ic-watch"></use></svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__name">Smartwatch Orbit S1</h3>
+          <p class="card__desc">Tela AMOLED, GPS integrado e resistência à água.</p>
+          <div class="card__foot">
+            <span class="price" data-price="899">R$ 899,00</span>
+            <button class="btn btn--buy">Comprar</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-cat="acessorios" data-name="Hub Link 8 em 1">
+        <div class="card__media">
+          <button class="fav" aria-label="Adicionar Hub Link 8 em 1 aos favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.2-4.5-7.2-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7.2 3C19.2 15.5 12 20 12 20Z"/></svg>
+          </button>
+          <svg class="card__art" viewBox="0 0 200 150" aria-label="Hub Link 8 em 1"><use href="#ic-hub"></use></svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__name">Hub Link 8 em 1</h3>
+          <p class="card__desc">USB-C com HDMI 4K, leitor SD e carga de 100 W.</p>
+          <div class="card__foot">
+            <span class="price" data-price="289">R$ 289,00</span>
+            <button class="btn btn--buy">Comprar</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="empty" id="emptyState" hidden>Nenhum produto encontrado. Ajuste a busca ou volte para “Todos”.</p>
+  </div>
+</section>
+
+<!-- ============ DIFERENCIAIS ============ -->
+<section class="section perks">
+  <div class="container">
+    <header class="section__head">
+      <h2 class="section__title">Como a LumiTech trabalha</h2>
+    </header>
+    <ul class="perk-grid">
+      <li class="perk"><span class="perk__ico">🚚</span><h3>Entrega rápida</h3><p>Pedidos aprovados até as 15h saem no mesmo dia.</p></li>
+      <li class="perk"><span class="perk__ico">🔒</span><h3>Compra segura</h3><p>Pagamento criptografado e dados nunca compartilhados.</p></li>
+      <li class="perk"><span class="perk__ico">💳</span><h3>Pagamento facilitado</h3><p>Pix, boleto ou cartão parcelado, sem pegadinha no checkout.</p></li>
+      <li class="perk"><span class="perk__ico">🛠️</span><h3>Suporte especializado</h3><p>Quem responde entende do produto e acompanha até resolver.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ QUEM SOMOS ============ -->
+<section class="section about" id="quem-somos">
+  <div class="container about__inner">
+    <div class="about__art" aria-hidden="true">
+      <div class="about__tile"><svg class="tile__art" viewBox="0 0 200 150"><use href="#ic-headset"></use></svg></div>
+      <div class="about__tile"><svg class="tile__art" viewBox="0 0 200 150"><use href="#ic-keyboard"></use></svg></div>
+      <div class="about__tile"><svg class="tile__art" viewBox="0 0 200 150"><use href="#ic-watch"></use></svg></div>
+      <div class="about__tile"><svg class="tile__art" viewBox="0 0 200 150"><use href="#ic-mouse"></use></svg></div>
+    </div>
+    <div class="about__copy">
+      <h2 class="section__title">Quem somos</h2>
+      <p>
+        A LumiTech nasceu de uma ideia simples: comprar tecnologia devia ser fácil de entender.
+        Por isso cada produto do catálogo passa por um teste nosso antes de ir para a vitrine,
+        e a descrição diz o que o aparelho faz — não o que soa bem no anúncio.
+      </p>
+      <p>
+        Trabalhamos com inovação de forma prática: buscamos o que melhora o uso do dia a dia,
+        cuidamos da qualidade peça por peça e tratamos a experiência depois da compra com a mesma
+        atenção da venda. Se algo não sair como esperado, a gente resolve.
+      </p>
+      <ul class="about__list">
+        <li>Catálogo testado antes de entrar na loja</li>
+        <li>Descrições claras, sem letra miúda</li>
+        <li>Pós-venda com acompanhamento até o fim</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="container cta__inner">
+    <h2>Pronto para levar sua experiência tecnológica para o próximo nível?</h2>
+    <p>Comece pelos destaques da semana e monte a sua setup do jeito certo.</p>
+    <a href="#produtos" class="btn btn--light">Explorar produtos</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contato">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand" href="#hero">
+        <span class="brand__mark">LT</span>
+        <span class="brand__name">LumiTech</span>
+      </a>
+      <p>Loja de tecnologia com curadoria própria: periféricos, eletrônicos e acessórios testados antes de chegar até você.</p>
+      <div class="social">
+        <a href="#contato" aria-label="Instagram da LumiTech"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#contato" aria-label="X da LumiTech"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
+        <a href="#contato" aria-label="YouTube da LumiTech"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.8v4.4l4-2.2Z"/></svg></a>
+        <a href="#contato" aria-label="LinkedIn da LumiTech"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M8 10.5V16M8 7.6v.1M12 16v-3.2a2 2 0 0 1 4 0V16"/></svg></a>
+      </div>
+    </div>
+
+    <nav class="footer__col" aria-label="Links rápidos">
+      <h3>Links rápidos</h3>
+      <a href="#hero">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#quem-somos">Quem somos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Categorias">
+      <h3>Categorias</h3>
+      <a href="#produtos">Headsets</a>
+      <a href="#produtos">Teclados</a>
+      <a href="#produtos">Mouses</a>
+      <a href="#produtos">Acessórios</a>
+      <a href="#produtos">Eletrônicos</a>
+    </nav>
+
+    <div class="footer__col">
+      <h3>Contato</h3>
+      <a href="mailto:contato@lumitech.com.br">contato@lumitech.com.br</a>
+      <a href="tel:+5508000000000">0800 000 0000</a>
+      <p>Atendimento de segunda a sexta, das 9h às 18h.</p>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© <span id="year">2026</span> LumiTech. Todos os direitos reservados.</p>
+    <p>CNPJ 00.000.000/0001-00 · Preços e condições sujeitos a alteração.</p>
+  </div>
+</footer>
+
+<!-- ============ CARRINHO ============ -->
+<aside class="drawer" id="cartDrawer" aria-label="Carrinho de compras" aria-hidden="true">
+  <div class="drawer__head">
+    <h2>Seu carrinho</h2>
+    <button class="icon-btn" id="cartClose" aria-label="Fechar carrinho">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer__body" id="cartItems"></div>
+  <div class="drawer__foot">
+    <div class="drawer__total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
+    <button class="btn btn--primary btn--block" id="checkoutBtn">Finalizar compra</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ ILUSTRAÇÕES (sprite SVG) ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="ic-headset" viewBox="0 0 200 150">
+    <path class="il-bd" d="M56 96V76a44 44 0 0 1 88 0v20"/>
+    <rect class="il-acc-f" x="38" y="84" width="30" height="46" rx="14"/>
+    <rect class="il-acc-f" x="132" y="84" width="30" height="46" rx="14"/>
+    <path class="il-bd" d="M68 100h10M122 100h10"/>
+  </symbol>
+  <symbol id="ic-keyboard" viewBox="0 0 200 150">
+    <rect class="il-fill" x="28" y="44" width="144" height="70" rx="12"/>
+    <path class="il-acc-s" d="M44 66h112M44 82h112M62 98h76"/>
+  </symbol>
+  <symbol id="ic-mouse" viewBox="0 0 200 150">
+    <rect class="il-fill" x="76" y="30" width="48" height="90" rx="24"/>
+    <path class="il-bd" d="M100 30v26"/>
+    <rect class="il-acc-f" x="95" y="44" width="10" height="18" rx="5"/>
+  </symbol>
+  <symbol id="ic-laptop" viewBox="0 0 200 150">
+    <rect class="il-fill" x="44" y="34" width="112" height="72" rx="10"/>
+    <rect class="il-screen" x="54" y="44" width="92" height="52" rx="6"/>
+    <path class="il-acc-s" d="M68 80h32M68 66h52"/>
+    <path class="il-bd" d="M28 106h144l8 12H20Z"/>
+  </symbol>
+  <symbol id="ic-watch" viewBox="0 0 200 150">
+    <rect class="il-fill" x="72" y="42" width="56" height="66" rx="16"/>
+    <rect class="il-screen" x="82" y="52" width="36" height="46" rx="10"/>
+    <path class="il-bd" d="M84 42V28h32v14M84 108v14h32v-14"/>
+    <path class="il-acc-s" d="M92 70h16M92 82h10"/>
+  </symbol>
+  <symbol id="ic-hub" viewBox="0 0 200 150">
+    <rect class="il-fill" x="40" y="58" width="120" height="40" rx="12"/>
+    <path class="il-acc-s" d="M64 78h14M92 78h14M120 78h14"/>
+    <path class="il-bd" d="M100 58V34h34"/>
+  </symbol>
+</svg>
+
+<script src="script.js"></script>
 </body>
 </html>
